@@ -192,10 +192,10 @@ export function Hero({ brandName, heroTitle, heroSubtitle }) {
                                 transition: { staggerChildren: 0.1 },
                             },
                         }}
-                        className="font-serif text-7xl leading-[0.85] text-green-950 md:text-[10vw] lg:text-[12vw] xl:text-[14vw] tracking-tighter"
+                        className="font-serif text-5xl leading-[0.9] text-green-950 md:text-[6vw] lg:text-[7.5vw] xl:text-[8vw] tracking-tighter"
                     >
                         {heroTitle.map((word, i) => (
-                            <div key={i} className="inline-block overflow-hidden mr-4 md:mr-8 lg:mr-12">
+                            <div key={i} className="inline-block overflow-hidden mr-3 md:mr-5 lg:mr-8">
                                 <motion.span
                                     variants={{
                                         hidden: { y: "100%" },
