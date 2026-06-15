@@ -180,8 +180,8 @@ export function Hero({ brandName, heroTitle, heroSubtitle }) {
             <Blob className="top-[-10%] right-[-10%] h-[500px] w-[500px]" />
             <Blob className="bottom-[10%] left-[-10%] h-[400px] w-[400px] bg-emerald-100/50" />
 
-            <div className="container mx-auto flex flex-col gap-16 md:gap-24">
-                <div className="z-10 w-full">
+            <div className="container mx-auto grid grid-cols-1 gap-12 lg:grid-cols-12">
+                <div className="z-10 flex flex-col justify-center lg:col-span-7">
                     <motion.h1
                         initial="hidden"
                         animate="visible"
@@ -192,10 +192,10 @@ export function Hero({ brandName, heroTitle, heroSubtitle }) {
                                 transition: { staggerChildren: 0.1 },
                             },
                         }}
-                        className="font-serif text-7xl leading-[0.85] text-green-950 md:text-[10vw] lg:text-[12vw] xl:text-[14vw] tracking-tighter"
+                        className="font-serif text-6xl leading-[1.1] text-green-950 md:text-8xl lg:text-[7rem]"
                     >
                         {heroTitle.map((word, i) => (
-                            <div key={i} className="inline-block overflow-hidden mr-4 md:mr-8 lg:mr-12">
+                            <div key={i} className="overflow-hidden">
                                 <motion.span
                                     variants={{
                                         hidden: { y: "100%" },
@@ -203,50 +203,46 @@ export function Hero({ brandName, heroTitle, heroSubtitle }) {
                                     }}
                                     className="inline-block"
                                 >
-                                    {word}
+                                    {word}&nbsp;
                                 </motion.span>
                             </div>
                         ))}
                     </motion.h1>
+
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.5, duration: 1 }}
+                        className="mt-8 max-w-md text-lg leading-relaxed text-green-900/70"
+                    >
+                        {heroSubtitle}
+                    </motion.p>
                 </div>
 
-                <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 items-start">
-                    <div className="z-10 flex flex-col justify-start lg:col-span-5">
-                        <motion.p
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.5, duration: 1 }}
-                            className="max-w-md text-lg md:text-xl leading-relaxed text-green-900/70"
-                        >
-                            {heroSubtitle}
-                        </motion.p>
-                    </div>
+                <div className="relative h-[60vh] lg:col-span-5 lg:h-auto">
+                    <motion.div style={{ y: y1 }} className="absolute inset-0 z-0 overflow-hidden rounded-[2rem]">
+                        <motion.img
+                            initial={{ scale: 1.2 }}
+                            animate={{ scale: 1 }}
+                            transition={{ duration: 1.5, ease: "easeOut" }}
+                            src={HERO_IMAGE}
+                            alt="Nature"
+                            className="h-full w-full object-cover"
+                        />
+                        {/* Overlay Gradient */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-green-950/40 to-transparent" />
+                    </motion.div>
 
-                    <div className="relative h-[40vh] lg:col-span-7 lg:h-[60vh] w-full">
-                        <motion.div style={{ y: y1 }} className="absolute inset-0 z-0 overflow-hidden rounded-[2rem]">
-                            <motion.img
-                                initial={{ scale: 1.2 }}
-                                animate={{ scale: 1 }}
-                                transition={{ duration: 1.5, ease: "easeOut" }}
-                                src={HERO_IMAGE}
-                                alt="Nature"
-                                className="h-full w-full object-cover"
-                            />
-                            {/* Overlay Gradient */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-green-950/40 to-transparent" />
-                        </motion.div>
-
-                        <motion.div
-                            style={{ y: y2 }}
-                            className="absolute -bottom-12 -left-12 z-10 hidden lg:block bg-stone-100 p-6 rounded-tl-[2rem] rounded-br-[2rem] shadow-xl max-w-xs"
-                        >
-                            <p className="font-serif italic text-2xl text-green-900 mb-2">"Serenity is not a luxury."</p>
-                            <div className="flex items-center gap-2 text-sm uppercase tracking-widest text-green-700/60">
-                                <div className="h-[1px] w-8 bg-green-700/60" />
-                                Manifesto 01
-                            </div>
-                        </motion.div>
-                    </div>
+                    <motion.div
+                        style={{ y: y2 }}
+                        className="absolute -bottom-12 -left-12 z-10 hidden lg:block bg-stone-100 p-6 rounded-tl-[2rem] rounded-br-[2rem] shadow-xl max-w-xs"
+                    >
+                        <p className="font-serif italic text-2xl text-green-900 mb-2">"Serenity is not a luxury."</p>
+                        <div className="flex items-center gap-2 text-sm uppercase tracking-widest text-green-700/60">
+                            <div className="h-[1px] w-8 bg-green-700/60" />
+                            Manifesto 01
+                        </div>
+                    </motion.div>
                 </div>
             </div>
 
